@@ -1,5 +1,5 @@
-This scripts sets up docker and then afterwards setup a containers listed in the defaults/main.yml file.
-    
+ This is a role to streamline the configuration and implementation of docker containers
+ 
     Configuration
     Files:
     vars/ contains a file with the docker container's information
