@@ -1,0 +1,4 @@
+---
+# Only run when service file is copied
+- name: reload firewalld
+  shell: firewall-cmd --reload

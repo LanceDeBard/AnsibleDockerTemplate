@@ -1,0 +1,19 @@
+---
+- name: Install docker
+  import_tasks: docker.yaml
+
+- name: Install Containers
+  include_tasks: setup.yaml
+  vars:
+    containername: "{{ item }}"
+  loop: "{{ containernames }}"
+  tags: install
+
+- name: Update Containers
+  include_tasks: setup.yaml
+  vars:
+    containername: "{{ item }}"
+  loop: "{{ containernames }}"
+  tags:
+    - update
+    - never

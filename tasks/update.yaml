@@ -1,0 +1,21 @@
+---
+- name: load variables from {{ containername }}Vars.yml
+  include_vars:
+    file: vars/{{ containername }}Vars.yml
+
+- name: Pull latest image for {{ containername }}
+  docker_image:
+    name: "{{ image }}"
+    source: pull
+    force_source: true
+
+- name: Run the {{ containername }} Container
+  docker_container:
+    image: "{{ image }}"
+    name: "{{ containername }}"
+    network_mode: "{{ network mode }}"
+    volumes: "{{ externalvolumes }}"
+    published_ports: "{{ usedports }}"
+    env: "{{ enviroment }}"
+    state: started
+    restart_policy: always

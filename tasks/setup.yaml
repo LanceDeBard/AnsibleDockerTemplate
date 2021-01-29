@@ -1,0 +1,42 @@
+---
+- name: Register {{ containername }} as container
+  debug:
+    var: "{{ containername }}"
+  register: containername
+
+- name: Load variables for {{ containername }}
+  include_vars:
+    file: "{{ containername }}Vars.yml"
+
+- name: Copy Firewall Definitions for {{ containername }} to Server
+  copy:
+    src: files/{{ containername }}.xml
+    dest: /etc/firewalld/services/{{ containername }}.xml
+  notify: reload firewalld
+
+- name: Flush Handler for firewall
+  meta: flush_handlers
+
+- name: Add service to firewalld
+  firewalld:
+    service: "{{ containername }}"
+    permanent: true
+    state: disabled
+    immediate: true
+- name: Pull latest image for {{ containername }}
+  docker_image:
+    name: "{{ image }}:latest"
+    source: pull
+
+- name: Run the {{ containername }} Container
+  docker_container:
+    image: "{{ image }}"
+    name: "{{ containername }}"
+    network_mode: "{{ networkmode }}"
+    volumes:
+      - "{{ sharedvolumes }}"
+      - "{{ externalvolumes }}"
+    published_ports: "{{ usedports }}"
+    env: "{{ enviroment }}"
+    state: started
+    restart_policy: unless-stopped

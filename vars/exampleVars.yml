@@ -1,0 +1,10 @@
+---
+image: linux/example # This should be replaced with the docker image to be downloaded
+usedports: # These are the ports that this server is going to use. Left is the host server's exposed port and right is the port the container exposes.  Left port must be in the appropiate xml file.
+  - 1111:1111
+  - 0000:0000
+externalvolumes: # These are mappings for directories to be accessed by the container. Left side is the location of directory on host. Right side is where the directory should be in the container itself.
+  - /mnt/directory/directory2:/config      # If multiple containers are going to use the same directory I recommend setting that up in the default variables main.yml file. It'll be applied for all containers there.
+  - /mnt/directory/directory:/downloads
+  - /mnt/directory:/drives/Directory
+  - /mnt/Library:/downloads/directory

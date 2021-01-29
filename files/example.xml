@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+<short>Example</short>
+<description>Example Service</description>
+<port port="0000" protocol="tcp"/>
+<port port="0000" protocol="udp"/>
+<port port="1111" protocol="tcp"/>
+<port port="1111" protocol="udp"/>
+</service>

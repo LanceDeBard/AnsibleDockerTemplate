@@ -1,0 +1,12 @@
+---
+networkmode: bridge   #This needs to be bridge to be used with ports
+enviroment:
+  PUID: "1000"        # You need to change PUID and PGID to reflect what user you would like to use the ports. This is overridable in the Vars file for your service
+  PGID: "1000" 
+  TZ: America/New_York #Set this to your actual timezone
+  AUTO_UPDATE: "true"
+  UMASK_SET: "002"    
+containernames:       #List the container names here. Names should be lowercase and are used to reference a {{containernames}}Vars file and a {{containernames}}.xml file.
+  - "example"
+shareddirs:
+  - /mnt/directory/directory:/exampledir
