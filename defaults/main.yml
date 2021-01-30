@@ -8,5 +8,3 @@ enviroment:
   UMASK_SET: "002"    
 containernames:       #List the container names here. Names should be lowercase and are used to reference a {{containernames}}Vars file and a {{containernames}}.xml file.
   - "example"
-shareddirs:
-  - /mnt/directory/directory:/exampledir

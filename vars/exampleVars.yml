@@ -4,7 +4,7 @@ usedports: # These are the ports that this server is going to use. Left is the h
   - 1111:1111
   - 0000:0000
 externalvolumes: # These are mappings for directories to be accessed by the container. Left side is the location of directory on host. Right side is where the directory should be in the container itself.
-  - /mnt/directory/directory2:/config      # If multiple containers are going to use the same directory I recommend setting that up in the default variables main.yml file. It'll be applied for all containers there.
+  - /mnt/directory/directory2:/config     
   - /mnt/directory/directory:/downloads
   - /mnt/directory:/drives/Directory
   - /mnt/Library:/downloads/directory

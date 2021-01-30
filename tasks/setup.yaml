@@ -33,9 +33,7 @@
     image: "{{ image }}"
     name: "{{ containername }}"
     network_mode: "{{ networkmode }}"
-    volumes:
-      - "{{ sharedvolumes }}"
-      - "{{ externalvolumes }}"
+    volumes: "{{ externalvolumes }}"
     published_ports: "{{ usedports }}"
     env: "{{ enviroment }}"
     state: started
